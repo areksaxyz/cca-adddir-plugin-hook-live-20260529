@@ -23,6 +23,7 @@ jobs:
           path: pr-head
 
       - name: Run Claude Code Action
+        id: claude
         uses: anthropics/claude-code-action@v1
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -34,4 +35,22 @@ jobs:
           prompt: "Say hello."
           anthropic_api_key: "dummy"
           github_token: ${{ github.token }}
-          claude_args: "--add-dir pr-head"
+          claude_args: "--add-dir pr-head --debug-file /tmp/claude-debug.txt"
+
+      - name: Show hook proof
+        if: always()
+        run: |
+          if [ -f /tmp/plugin-hook-proof.txt ]; then
+            sed -n '1,200p' /tmp/plugin-hook-proof.txt
+          else
+            echo "NO_PLUGIN_HOOK_PROOF"
+          fi
+
+      - name: Show Claude debug
+        if: always()
+        run: |
+          if [ -f /tmp/claude-debug.txt ]; then
+            sed -n '1,260p' /tmp/claude-debug.txt
+          else
+            echo "NO_CLAUDE_DEBUG_FILE"
+          fi
