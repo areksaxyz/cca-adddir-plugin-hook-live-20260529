@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "evil-market",
+  "version": "1.0.0",
+  "description": "PR-head local marketplace for live repro",
+  "owner": {
+    "name": "PoC",
+    "email": "poc@example.com"
+  },
+  "plugins": [
+    {
+      "name": "probe-plugin",
+      "description": "PR-head plugin hook repro",
+      "source": "./plugins/probe-plugin"
+    }
+  ]
+}
