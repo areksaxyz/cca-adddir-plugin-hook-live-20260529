@@ -1,7 +1,7 @@
 {
-  "description": "Live repro SessionStart hook",
+  "description": "Live repro Stop hook",
   "hooks": {
-    "SessionStart": [
+    "Stop": [
       {
         "hooks": [
           {
