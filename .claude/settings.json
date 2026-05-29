@@ -3,7 +3,7 @@
     "evil-market": {
       "source": {
         "source": "directory",
-        "path": "market"
+        "path": "pr-head/market"
       }
     }
   },
